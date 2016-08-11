@@ -1,0 +1,343 @@
+<!DOCTYPE html> 
+<html>
+ <head>
+	<title>FFXIV timer</title>
+	<link rel="shortcut icon" href="images/favicon.png" type="image/png" />
+	<link rel="stylesheet" href="/style.css" type="text/css">
+	<link rel="stylesheet" href="/menu/menu.css" type="text/css">
+ </head>
+ <script>
+	 //Despawn time and BTN pop times aren't correct.
+ 
+	//11minutes 39.6 seconds in between each spawn. = 696seconds.
+	//Need just one exact time(with exact seconds) to find out the others.
+	var BTNtimes = new Array(1381408903, 1381409599, 1381410295, 1381410991, 1381407511, 1381408207);
+	//1hour 10minutes between pops.
+	var delay = 4200;
+	
+	var MINtimes = new Array(1381408903, 1381409599, 1381410295, 1381410991, 1381408207);
+	
+	
+	var despawnTime = 510;
+	
+	function updaterTimers()
+	{
+		var currentTime = new Date()
+		//BTN
+		for (i=0;i<BTNtimes.length;i++)
+		{
+			var timeLeft = Math.ceil(currentTime.getTime()/1000) - BTNtimes[i];
+			timeLeft = delay - timeLeft%delay;
+			var minutes = Math.floor(timeLeft/60);
+			var seconds = timeLeft%60;
+			var str = "";
+			if(minutes < 10)
+				str += "0" + minutes;
+			else if(minutes == 0)
+				str += "00";
+			else 
+				str += minutes;
+				
+			str += ":"
+			
+			if(seconds < 10)
+				str += "0" + seconds;
+			else if(seconds == 0)
+				str += "00";
+			else 
+				str += seconds;
+				
+			
+			if(timeLeft >= delay - despawnTime)
+			{
+				var timePreDespawn = despawnTime - (delay - timeLeft);
+				minutes = Math.floor(timePreDespawn/60);
+				seconds = timePreDespawn%60;
+				str = "Despawn : ";
+				
+				if(minutes < 10)
+					str += "0" + minutes;
+				else if(minutes == 0)
+					str += "00";
+				else 
+					str += minutes;
+					
+				str += ":"
+				
+				if(seconds < 10)
+					str += "0" + seconds;
+				else if(seconds == 0)
+					str += "00";
+				else 
+					str += seconds;
+					
+				var GP = (Math.floor(timePreDespawn/3))*5;
+				
+				str += "[GP"+GP+"]";
+			}
+			
+			document.getElementById("timerBTN" + i).innerHTML = str;
+		}
+		
+		//MIN
+		for (i=0;i<MINtimes.length;i++)
+		{
+			var timeLeft = Math.ceil(currentTime.getTime()/1000) - MINtimes[i];
+			timeLeft = delay - timeLeft%delay;
+			var minutes = Math.floor(timeLeft/60);
+			var seconds = timeLeft%60;
+			var str = "";
+			
+			if(minutes < 10)
+				str += "0" + minutes;
+			else if(minutes == 0)
+				str += "00";
+			else 
+				str += minutes;
+				
+			str += ":"
+			
+			if(seconds < 10)
+				str += "0" + seconds;
+			else if(seconds == 0)
+				str += "00";
+			else 
+				str += seconds;
+				
+			if(timeLeft >= delay - despawnTime)
+			{
+				var timePreDespawn = despawnTime - (delay - timeLeft);
+				minutes = Math.floor(timePreDespawn/60);
+				seconds = timePreDespawn%60;
+				str = "Despawn: ";
+				
+				if(minutes < 10)
+					str += "0" + minutes;
+				else if(minutes == 0)
+					str += "00";
+				else 
+					str += minutes;
+					
+				str += ":"
+				
+				if(seconds < 10)
+					str += "0" + seconds;
+				else if(seconds == 0)
+					str += "00";
+				else 
+					str += seconds;
+					
+				var GP = (Math.floor(timePreDespawn/3))*5;
+				
+				str += "[GP"+GP+"]";
+			}
+			
+			document.getElementById("timerMIN" + i).innerHTML = str;
+		}
+		
+		var MIN2times = new Array(1396114137, 1396039066, 1396038358, 1381410991, 1381408207,1381410295);
+		var BTN2times = new Array(1396038358, 1396038358, 1396114137, 1396039066, 1381410991,1381409599);
+		
+		//MIN
+		for (i=0;i<MIN2times.length;i++)
+		{
+			var timeLeft = Math.ceil(currentTime.getTime()/1000) - MIN2times[i];
+			timeLeft = delay - timeLeft%delay;
+			var minutes = Math.floor(timeLeft/60);
+			var seconds = timeLeft%60;
+			var str = "";
+			
+			if(minutes < 10)
+				str += "0" + minutes;
+			else if(minutes == 0)
+				str += "00";
+			else 
+				str += minutes;
+				
+			str += ":"
+			
+			if(seconds < 10)
+				str += "0" + seconds;
+			else if(seconds == 0)
+				str += "00";
+			else 
+				str += seconds;
+				
+			if(timeLeft >= delay - despawnTime)
+			{
+				var timePreDespawn = despawnTime - (delay - timeLeft);
+				minutes = Math.floor(timePreDespawn/60);
+				seconds = timePreDespawn%60;
+				str = "Despawn: ";
+				
+				if(minutes < 10)
+					str += "0" + minutes;
+				else if(minutes == 0)
+					str += "00";
+				else 
+					str += minutes;
+					
+				str += ":"
+				
+				if(seconds < 10)
+					str += "0" + seconds;
+				else if(seconds == 0)
+					str += "00";
+				else 
+					str += seconds;
+					
+				var GP = (Math.floor(timePreDespawn/3))*5;
+				
+				str += "[GP"+GP+"]";
+			}
+			
+			document.getElementById("timer2MIN" + i).innerHTML = str;
+		}
+		
+		
+		//BTN2
+		for (i=0;i<BTN2times.length;i++)
+		{
+			var timeLeft = Math.ceil(currentTime.getTime()/1000) - BTN2times[i];
+			timeLeft = delay - timeLeft%delay;
+			var minutes = Math.floor(timeLeft/60);
+			var seconds = timeLeft%60;
+			var str = "";
+			
+			if(minutes < 10)
+				str += "0" + minutes;
+			else if(minutes == 0)
+				str += "00";
+			else 
+				str += minutes;
+				
+			str += ":"
+			
+			if(seconds < 10)
+				str += "0" + seconds;
+			else if(seconds == 0)
+				str += "00";
+			else 
+				str += seconds;
+				
+			if(timeLeft >= delay - despawnTime)
+			{
+				var timePreDespawn = despawnTime - (delay - timeLeft);
+				minutes = Math.floor(timePreDespawn/60);
+				seconds = timePreDespawn%60;
+				str = "Despawn: ";
+				
+				if(minutes < 10)
+					str += "0" + minutes;
+				else if(minutes == 0)
+					str += "00";
+				else 
+					str += minutes;
+					
+				str += ":"
+				
+				if(seconds < 10)
+					str += "0" + seconds;
+				else if(seconds == 0)
+					str += "00";
+				else 
+					str += seconds;
+					
+				var GP = (Math.floor(timePreDespawn/3))*5;
+				
+				str += "[GP"+GP+"]";
+			}
+			
+			document.getElementById("timer2BTN" + i).innerHTML = str;
+		}
+	}
+	
+	setInterval(function() { updaterTimers(); }, 1000);
+	
+	
+ </script>
+<body>
+<div>
+	<img id="background" src="/backgrounds/FFXIV.jpg" alt="background" title="background"/>
+</div>
+
+<script language="javascript" src="/menu/menu.js" type="text/javascript"></script>
+
+<div id="scroller">
+	<h1>Jasmingiroux.com</h1>
+	<div id="content">
+		<p>
+			Botanist <br />
+			
+			Trilium Bulb/Kidragora  [East Shroud - Nine Ivies]	<br />
+			<span id="timerBTN0">time </span> <br />
+			Crawler Cocoon[East Shroud - Nine Ivies] <br />
+			<span id="timerBTN1">time </span> <br />
+			Trilium[East Shroud] | Honey Lemon[Eastern La Noscea] <br />
+			<span id="timerBTN2">time </span> <br />
+			Spruce Log[Coertas - Dragonhead] | Prickly pineapple[Eastern La Noscea]	<br />
+			<span id="timerBTN3">time </span> <br />
+			Vampire Plant[Coertas - Dragonhead] <br />
+			<span id="timerBTN4">time </span> <br />
+			Thavnairian Mistletoe[Coertas - Dragonhead] <br />
+			<span id="timerBTN5">time </span> <br />
+			
+		</p>
+		
+		<p>
+			Miner <br />
+			
+			Astral Rock   [Coertas - Dragonhead] <br />
+			<span id="timerMIN0">time </span> <br />
+			Darksteel Ore [Coertas - Dragonhead] <br />
+			<span id="timerMIN1">time </span> <br />
+			Gold Sand     [Eastern Thanalan - Drybone]<br />
+			<span id="timerMIN2">time </span> <br />
+			Gold Ore      [Eastern Thanalan - Drybone]<br />
+			<span id="timerMIN3">time </span> <br />
+			Volcanic Rock Salt [Eastern La Noscea]<br />
+			<span id="timerMIN4">time </span>
+			
+		</p>
+		
+		<h2>PATCH 2.2 ITEMS</h2>
+		
+		
+		<p>
+			Botanist <br />
+			
+			FRAGRENT LOG#6[South Shroud]K <br />
+			<span id="timer2BTN0">time </span> <br />
+			Shroud Tea Leaves #6 [Central Shroud]K <br />
+			<span id="timer2BTN1">time </span> <br />
+			SCARLET SAP #4[North Shroud]K <br />
+			<span id="timer2BTN2">time </span> <br />
+			YOUNG CIELDALAES SPINASH #6[Lower La Noscea]K <br />
+			<span id="timer2BTN3">time </span> <br />
+			Apricot #2[MIDDLE LANOSCEA] <br />
+			<span id="timer2BTN4">time </span> <br />
+			Blood Orange #2[Upper La Noscea] <br />
+			<span id="timer2BTN5">time </span> <br />
+		</p>
+		
+		<p>
+			Miner <br />
+			
+			FERBERITE #6[Northern Thanalan]K <br />
+			<span id="timer2MIN0">time </span> <br />
+			Umbral Rock #7 [South Shroud]K <br />
+			<span id="timer2MIN1">time </span> <br />
+			RAW RUBY[Lower La Noscea] <br />
+			<span id="timer2MIN2">time </span> <br />
+			XXXX[Middle La Noscea] <br />
+			<span id="timer2MIN3">time </span> <br />
+			XXXX[Western Thanalan] <br />
+			<span id="timer2MIN4">time </span> <br />
+			Native Gold[Central Thanalan] <br />
+			<span id="timer2MIN5">time </span> <br />
+		</p>
+		
+	</div>
+</div>
+</body>	
+</html>

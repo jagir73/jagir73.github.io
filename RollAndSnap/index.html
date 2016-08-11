@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+ <head>
+	<title>RollAndSnap</title>
+	<link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
+	<link rel="stylesheet" href="/style.css" type="text/css">
+	<link rel="stylesheet" href="/menu/menu.css" type="text/css">
+ </head>
+ <script>
+	function BackgroundLoad()
+	{
+		document.getElementById("background").src = "/backgrounds/background" + Math.ceil(Math.random() * 14) + ".jpg";
+	}
+ </script>
+<body OnLoad="BackgroundLoad()">
+<div>
+	<img id="background" alt="background" title="background" />
+</div>
+
+<script language="javascript" src="/menu/menu.js" type="text/javascript"></script>
+
+<div id="scroller">
+	<div id="content">
+		<h1 style="color:red; text-align:center;">Roll And Snap</h1>
+		<p style="color:red;text-align:center;">
+			Roll And Snap is a game created by a group of friend and myself during high school.
+			I then decided to make it my first android application. It doesn't look like much without
+			a tutorial on how to play but the mechanic is there for us veterans of the game. <br />
+			
+			<img style="height:75%;width:75%;" id="screenshot" src="./images/screenshot.png" alt="screenshot" title="screenshot"/> <br />
+			<a style="color:red;" href="./RollAndSnap.apk">Download Link</a>
+		</p>
+	</div>
+</div>
+</body>	
+</html>
+	
