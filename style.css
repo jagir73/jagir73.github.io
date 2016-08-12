@@ -49,6 +49,12 @@ h1
 	padding-bottom:10px;
 }
 
+.title
+{
+	color:red; 
+	text-align:center;
+}
+
 #gear img
 {
 	width:500px;
